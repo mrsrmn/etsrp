@@ -31,6 +31,6 @@ while True:
         time.sleep(15)
 
     else:
-        print("No open ETS2 detected")
+        print("No running ETS2 detected")
 
     time.sleep(15)
