@@ -11,6 +11,7 @@ print("╔═══════════════════════�
       "║ ETSRP provides a better version of ETS2's original Discord Rich Presence   ║\n"
       "║                                                                            ║\n"
       "║ Made by MakufonSkifto using pypresence                                     ║\n"
+      "║ This may become an actual ETS2 mod soon.                                   ║\n"
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
 while True:
