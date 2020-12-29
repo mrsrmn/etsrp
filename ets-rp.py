@@ -6,12 +6,13 @@ import wmi
 f = wmi.WMI()
 
 print("╔════════════════════════════════════════════════════════════════════════════╗\n"
-      "║ Welcome to ETSRP!                                                          ║\n"
+      "║ Welcome to ETSRP v1!                                                       ║\n"
       "║                                                                            ║\n"
       "║ ETSRP provides a better version of ETS2's original Discord Rich Presence   ║\n"
       "║                                                                            ║\n"
       "║ Made by MakufonSkifto using pypresence                                     ║\n"
       "║ This may become an actual ETS2 mod soon.                                   ║\n"
+      "║ There may be a little ping on the Rich Presence                            ║\n"
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
 while True:
