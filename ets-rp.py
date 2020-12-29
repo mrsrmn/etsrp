@@ -9,6 +9,8 @@ print("╔═══════════════════════�
       "║ Welcome to ETSRP!                                                          ║\n"
       "║                                                                            ║\n"
       "║ ETSRP provides a better version of ETS2's original Discord Rich Presence   ║\n"
+      "║                                                                            ║\n"
+      "║ Made by MakufonSkifto using pypresence                                     ║\n"
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
 while True:
