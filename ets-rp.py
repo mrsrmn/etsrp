@@ -5,6 +5,12 @@ import wmi
 
 f = wmi.WMI()
 
+print("╔════════════════════════════════════════════════════════════════════════════╗\n"
+      "║ Welcome to ETSRP!                                                          ║\n"
+      "║                                                                            ║\n"
+      "║ ETSRP provides a better version of ETS2's original Discord Rich Presence   ║\n"
+      "╚════════════════════════════════════════════════════════════════════════════╝\n")
+
 while True:
     li = []
     for process in f.Win32_Process():
@@ -26,5 +32,3 @@ while True:
         print("No ETS2 detected")
 
     time.sleep(15)
-
-
