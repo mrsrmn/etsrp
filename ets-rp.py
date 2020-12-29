@@ -8,13 +8,16 @@ f = wmi.WMI()
 RPC = Presence("793495110440583178")
 
 print("╔════════════════════════════════════════════════════════════════════════════╗\n"
-      "║ Welcome to ETSRP v1.2!                                                       ║\n"
+      "║ Welcome to ETSRP v1.2!                                                     ║\n"
       "║                                                                            ║\n"
       "║ ETSRP provides a better version of ETS2's original Discord Rich Presence   ║\n"
       "║                                                                            ║\n"
       "║ Made by MakufonSkifto using pypresence                                     ║\n"
       "║ This may become an actual ETS2 mod soon.                                   ║\n"
       "║ There may be a little ping on the Rich Presence but not too much           ║\n"
+      "║                                                                            ║\n"
+      "║ If there is a bug in the program, please open an issue at the GitHub       ║\n"
+      "║ repository                                                                 ║\n"
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
 while True:
