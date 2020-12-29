@@ -12,7 +12,7 @@ print("╔═══════════════════════�
       "║                                                                            ║\n"
       "║ Made by MakufonSkifto using pypresence                                     ║\n"
       "║ This may become an actual ETS2 mod soon.                                   ║\n"
-      "║ There may be a little ping on the Rich Presence                            ║\n"
+      "║ There may be a little ping on the Rich Presence but not too much           ║\n"
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
 while True:
