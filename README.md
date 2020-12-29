@@ -4,4 +4,4 @@
 
 ## Usage
 
-To use BetterRP, just download a .zip clone of the repo and start the `etsrp.exe` file. Don't worry, it has no viruses.
+To use BetterRP, just download a .zip clone of the repo and start the `etsrp.exe` file in the `dist` folder. Don't worry, it has no viruses.
