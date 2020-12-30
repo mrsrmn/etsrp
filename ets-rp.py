@@ -10,7 +10,7 @@ import requests
 import ujson as json
 
 f = wmi.WMI()
-RPC = Presence("793495110440583178")
+rpc = Presence("793495110440583178")
 
 print("╔════════════════════════════════════════════════════════════════════════════╗\n"
       "║ Welcome to ETSRP v1.3!                                                     ║\n"
@@ -37,8 +37,6 @@ while True:
     try:
         response = requests.get(url="http://169.254.50.214:25555/api/ets2/telemetry")
         info = json.loads(response.content)
-
-        now_datetime = datetime.datetime.now()
     except requests.exceptions.ConnectionError:
         response = None
         info = None
@@ -51,17 +49,17 @@ while True:
     if "eurotrucks2.exe" in li:
 
         now = epoch.now()
-        RPC.connect()
+        rpc.connect()
 
         try:
             if info["game"]["paused"] is True:
                 text = "Paused / Idle"
-            elif info["game"]["paused"] is False:
-                text = f"Driving with {info['truck']['make']} {info['truck']['model']}"
             elif info["game"]["paused"] is False and info["truck"]["make"] != "" and\
                     info["job"]["destinationCity"] != "":
                 text = f"Driving with {info['truck']['make']} {info['truck']['model']}" \
                        f" to {info['job']['destinationCity']}"
+            elif info["game"]["paused"] is False:
+                text = f"Driving with {info['truck']['make']} {info['truck']['model']}"
             else:
                 rand = random.choice(["in Europe", "with some Truck", "to a City"])
                 text = f"Driving {rand}"
@@ -69,7 +67,7 @@ while True:
             rand = random.choice(["in Europe", "with some Truck", "to a City"])
             text = f"Driving {rand}"
 
-        RPC.update(state=text, large_image="ets", large_text="RP Mod by MakufonSkifto",
+        rpc.update(state=text, large_image="ets", large_text="RP Mod by MakufonSkifto",
                    small_image="eu", start=now)
 
         now_datetime = datetime.datetime.now()
@@ -79,7 +77,7 @@ while True:
     else:
         now_datetime = datetime.datetime.now()
         try:
-            RPC.close()
+            rpc.clear()
             print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected, closing RP")
         except AttributeError:
             print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected")
