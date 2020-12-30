@@ -1,5 +1,6 @@
 from pypresence import Presence
 import wmi
+import random
 
 import time
 import epoch
@@ -29,9 +30,10 @@ while True:
     for process in f.Win32_Process():
         li.append(process.Name)
 
+    response = requests.get(url="http://169.254.50.214:25555/api/ets2/telemetry")
+    info = json.loads(response.content)
+
     if "eurotrucks2.exe" in li:
-        response = requests.get(url="http://169.254.50.214:25555/api/ets2/telemetry")
-        info = json.loads(response.content)
 
         now = epoch.now()
         RPC.connect()
@@ -40,8 +42,11 @@ while True:
             text = "Paused / Idle"
         elif info["game"]["paused"] is False and info["truck"]["make"] != "":
             text = f"Driving with {info['truck']['make']} {info['truck']['model']}"
+        elif info["game"]["paused"] is False and info["truck"]["make"] != "" and info["job"]["destinationCity"] != "":
+            text = f"Driving with {info['truck']['make']} {info['truck']['model']} to {info['job']['destinationCity']}"
         else:
-            text = "Driving in Europe"
+            rand = random.choice(["in Europe", "with some Truck", "to a City"])
+            text = f"Driving {rand}"
 
         RPC.update(state=text, large_image="ets", large_text="RP Mod by MakufonSkifto",
                    small_image="eu", start=now)
@@ -58,4 +63,4 @@ while True:
         except AttributeError:
             print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected")
 
-    time.sleep(7)
+    time.sleep(5)
