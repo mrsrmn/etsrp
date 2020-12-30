@@ -11,6 +11,7 @@ import ujson as json
 
 f = wmi.WMI()
 rpc = Presence("793495110440583178")
+rpc.connect()
 
 print("╔════════════════════════════════════════════════════════════════════════════╗\n"
       "║ Welcome to ETSRP v1.3!                                                     ║\n"
@@ -26,7 +27,7 @@ print("╔═══════════════════════�
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
 now = datetime.datetime.now()
-print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program")
+print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to exit")
 print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
 
 while True:
@@ -46,10 +47,10 @@ while True:
               f" Please download one for more detailed RP."
               f" Tutorial on downloading it: https://github.com/Funbit/ets2-telemetry-server#installation")
 
-    if "eurotrucks2.exe" in li:
+    now_date = datetime.datetime.now()
+    now = epoch.now()
 
-        now = epoch.now()
-        rpc.connect()
+    if "eurotrucks2.exe" in li:
 
         try:
             if info["game"]["paused"] is True:
@@ -63,16 +64,15 @@ while True:
             else:
                 rand = random.choice(["in Europe", "with some Truck", "to a City"])
                 text = f"Driving {rand}"
+
         except TypeError:
             rand = random.choice(["in Europe", "with some Truck", "to a City"])
             text = f"Driving {rand}"
 
-        rpc.update(state=text, large_image="ets", large_text="RP Mod by MakufonSkifto",
+        rpc.update(state=text, large_image="ets", large_text=f"{info['game']['time']} In Game",
                    small_image="eu", start=now)
 
-        now_datetime = datetime.datetime.now()
-        print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: Showing RP")
-        time.sleep(5)
+        print(f"[INFO {now_date.strftime('%H:%M:%S')}]: Showing RP")
 
     else:
         now_datetime = datetime.datetime.now()
