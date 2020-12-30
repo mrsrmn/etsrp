@@ -10,4 +10,4 @@ For a detailed RP in your Discord Profile, download the [ETS2 Telemetry Server](
 
 ## WARNING
 
-**To use the ternary server with ETSRP, VMware Network Adapter VMnet1 **MUST** be selected as Network Interfaces
+**To use the telemetry server with ETSRP, VMware Network Adapter VMnet1 **MUST** be selected as Network Interfaces**
