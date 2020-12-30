@@ -1,6 +1,8 @@
 from pypresence import Presence
 
 import wmi
+import socket
+
 import random
 
 import time
@@ -11,6 +13,7 @@ import requests
 import ujson as json
 
 f = wmi.WMI()
+
 rpc = Presence("793495110440583178")
 rpc.connect()
 
@@ -37,19 +40,19 @@ while True:
     for process in f.Win32_Process():
         li.append(process.Name)
 
-    try:
-        response = requests.get(url="http://169.254.50.214:25555/api/ets2/telemetry")
-        info = json.loads(response.content)
-    except requests.exceptions.ConnectionError:
-        response = None
-        info = None
-
-        now_datetime = datetime.datetime.now()
-        print(f"[WARNING {now_datetime.strftime('%H:%M:%S')}]: No ETS Telemetry server found."
-              f" Please download one for more detailed RP."
-              f" Tutorial on downloading it: https://github.com/Funbit/ets2-telemetry-server#installation")
-
     if "eurotrucks2.exe" in li:
+
+        try:
+            response = requests.get(url=f"http://{socket.gethostbyname(socket.gethostname())}:25555/api/ets2/telemetry")
+            info = json.loads(response.content)
+        except requests.exceptions.ConnectionError:
+            response = None
+            info = None
+
+            now_datetime = datetime.datetime.now()
+            print(f"[WARNING {now_datetime.strftime('%H:%M:%S')}]: No ETS Telemetry server found."
+                  f" Please download one for more detailed RP."
+                  f" Tutorial on downloading it: https://github.com/Funbit/ets2-telemetry-server#installation")
 
         now_datetime = datetime.datetime.now()
 
