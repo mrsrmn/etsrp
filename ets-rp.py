@@ -5,7 +5,7 @@ import time
 import epoch
 import datetime
 
-import urllib3
+import requests
 import ujson as json
 
 f = wmi.WMI()
@@ -30,13 +30,13 @@ while True:
         li.append(process.Name)
 
     if "eurotrucks2.exe" in li:
-        response = urllib3.get_host(url="http://169.254.50.214:25555/api/ets2/telemetry")
-        info = json.load(response)
+        response = requests.get(url="http://169.254.50.214:25555/api/ets2/telemetry")
+        info = json.loads(response.content)
 
         now = epoch.now()
         RPC.connect()
 
-        if info["game"]["paused"] == "true":
+        if info["game"]["paused"] is True:
             text = "Paused / Idle"
         elif info["game"]["paused"] is False and info["truck"]["make"] != "":
             text = f"Driving with {info['truck']['make']} {info['truck']['model']}"
