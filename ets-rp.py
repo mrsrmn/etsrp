@@ -1,8 +1,12 @@
 from pypresence import Presence
+import wmi
+
 import time
 import epoch
-import wmi
 import datetime
+
+import urllib3
+import ujson as json
 
 f = wmi.WMI()
 RPC = Presence("793495110440583178")
@@ -26,16 +30,25 @@ while True:
         li.append(process.Name)
 
     if "eurotrucks2.exe" in li:
-        now = epoch.now()
+        response = urllib3.get_host(url="http://169.254.50.214:25555/api/ets2/telemetry")
+        info = json.load(response)
 
+        now = epoch.now()
         RPC.connect()
 
-        RPC.update(state="Driving in Europe", large_image="ets", large_text="RP Mod by MakufonSkifto",
+        if info["game"]["paused"] == "true":
+            text = "Paused / Idle"
+        elif info["game"]["paused"] is False and info["truck"]["make"] != "":
+            text = f"Driving with {info['truck']['make']} {info['truck']['model']}"
+        else:
+            text = "Driving in Europe"
+
+        RPC.update(state=text, large_image="ets", large_text="RP Mod by MakufonSkifto",
                    small_image="eu", start=now)
 
         now_datetime = datetime.datetime.now()
         print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: Showing RP")
-        time.sleep(15)
+        time.sleep(5)
 
     else:
         now_datetime = datetime.datetime.now()
@@ -45,4 +58,4 @@ while True:
         except AttributeError:
             print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected")
 
-    time.sleep(10)
+    time.sleep(7)
