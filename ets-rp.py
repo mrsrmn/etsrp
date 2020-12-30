@@ -88,10 +88,6 @@ while True:
 
     else:
         now_datetime = datetime.datetime.now()
-        try:
-            rpc.close()
-            print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected, closing RP")
-        except AttributeError:
-            print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected")
+        print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected")
 
     time.sleep(7)
