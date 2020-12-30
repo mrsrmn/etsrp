@@ -57,8 +57,17 @@ while True:
         now_datetime = datetime.datetime.now()
 
         try:
+            if round(info['truck']['speed']) == 0:
+                speed = "Truck Speed: Stopped"
+            else:
+                speed = f"Truck Speed: {round(info['truck']['speed'])}"
+        except TypeError:
+            speed = None
+
+        try:
             if info["game"]["paused"] is True:
                 text = "Paused / Idle"
+                speed = None
             elif info["truck"]["make"] != "" and info["job"]["destinationCity"] != "":
                 text = f"Driving with {info['truck']['make']} {info['truck']['model']}" \
                        f" to {info['job']['destinationCity']}"
@@ -71,14 +80,6 @@ while True:
         except TypeError:
             rand = random.choice(["in Europe", "with some Truck", "to a City"])
             text = f"Driving {rand}"
-
-        try:
-            if round(info['truck']['speed']) == 0:
-                speed = "Truck Speed: Stopped"
-            else:
-                speed = f"Truck Speed: {round(info['truck']['speed'])}"
-        except TypeError:
-            speed = None
 
         rpc.update(state=text, large_image="ets", large_text=speed,
                    small_image="eu", small_text="RP Mod by MakufonSkifto", start=now_epoch)
