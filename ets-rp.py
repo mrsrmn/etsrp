@@ -59,8 +59,7 @@ while True:
         try:
             if info["game"]["paused"] is True:
                 text = "Paused / Idle"
-            elif info["game"]["paused"] is False and info["truck"]["make"] != "" and\
-                    info["job"]["destinationCity"] != "":
+            elif info["truck"]["make"] != "" and info["job"]["destinationCity"] != "":
                 text = f"Driving with {info['truck']['make']} {info['truck']['model']}" \
                        f" to {info['job']['destinationCity']}"
             elif info["game"]["paused"] is False:
@@ -78,8 +77,7 @@ while True:
         else:
             speed = round(info['truck']['speed'])
 
-        rpc.update(state=text, large_image="ets", large_text=f"{info['game']['time']} In Game\n"
-                                                             f"Truck Speed: {speed}",
+        rpc.update(state=text, large_image="ets", large_text=f"Truck Speed: {speed}",
                    small_image="eu", small_text="RP Mod by MakufonSkifto", start=now_epoch)
 
         print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: Showing RP")
