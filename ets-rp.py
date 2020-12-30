@@ -30,21 +30,31 @@ while True:
     for process in f.Win32_Process():
         li.append(process.Name)
 
-    response = requests.get(url="http://169.254.50.214:25555/api/ets2/telemetry")
-    info = json.loads(response.content)
+    try:
+        response = requests.get(url="http://169.254.50.214:25555/api/ets2/telemetry")
+        info = json.loads(response.content)
+    except requests.exceptions.ConnectionError:
+        response = None
+        info = None
 
     if "eurotrucks2.exe" in li:
 
         now = epoch.now()
         RPC.connect()
 
-        if info["game"]["paused"] is True:
-            text = "Paused / Idle"
-        elif info["game"]["paused"] is False and info["truck"]["make"] != "":
-            text = f"Driving with {info['truck']['make']} {info['truck']['model']}"
-        elif info["game"]["paused"] is False and info["truck"]["make"] != "" and info["job"]["destinationCity"] != "":
-            text = f"Driving with {info['truck']['make']} {info['truck']['model']} to {info['job']['destinationCity']}"
-        else:
+        try:
+            if info["game"]["paused"] is True:
+                text = "Paused / Idle"
+            elif info["game"]["paused"] is False and info["truck"]["make"] != "":
+                text = f"Driving with {info['truck']['make']} {info['truck']['model']}"
+            elif info["game"]["paused"] is False and info["truck"]["make"] != "" and\
+                    info["job"]["destinationCity"] != "":
+                text = f"Driving with {info['truck']['make']} {info['truck']['model']}" \
+                       f" to {info['job']['destinationCity']}"
+            else:
+                rand = random.choice(["in Europe", "with some Truck", "to a City"])
+                text = f"Driving {rand}"
+        except TypeError:
             rand = random.choice(["in Europe", "with some Truck", "to a City"])
             text = f"Driving {rand}"
 
