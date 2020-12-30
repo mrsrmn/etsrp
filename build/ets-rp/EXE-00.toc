@@ -2078,7 +2078,7 @@
  [],
  False,
  False,
- 1609312042,
+ 1609314420,
  [('run.exe',
    'c:\\users\\emirs\\pycharmprojects\\meon\\venv\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
    'EXECUTABLE')])
