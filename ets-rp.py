@@ -72,12 +72,15 @@ while True:
             rand = random.choice(["in Europe", "with some Truck", "to a City"])
             text = f"Driving {rand}"
 
-        if round(info['truck']['speed']) == 0:
-            speed = "Stopped"
-        else:
-            speed = round(info['truck']['speed'])
+        try:
+            if round(info['truck']['speed']) == 0:
+                speed = "Truck Speed: Stopped"
+            else:
+                speed = f"Truck Speed: {round(info['truck']['speed'])}"
+        except TypeError:
+            speed = None
 
-        rpc.update(state=text, large_image="ets", large_text=f"Truck Speed: {speed}",
+        rpc.update(state=text, large_image="ets", large_text=speed,
                    small_image="eu", small_text="RP Mod by MakufonSkifto", start=now_epoch)
 
         print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: Showing RP")
