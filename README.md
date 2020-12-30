@@ -10,4 +10,4 @@ For a detailed RP in your Discord Profile, download the [ETS2 Telemetry Server](
 
 ## WARNING
 
-**To use the telemetry server with ETSRP, `VMware Network Adapter VMnet8` **MUST** be selected as Network Interfaces. If `VMware Network Adapter VMnet8` doesn't exist, select `Wifi` or `Ethernet`. It depends on what you are using.**
+**To use the telemetry server with ETSRP, `VMware Network Adapter VMnet8` **MUST** be selected as Network Interfaces. If `VMware Network Adapter VMnet8` doesn't exist, select `Wifi` or `Ethernet`. It depends on what you are using for internet connection.**
