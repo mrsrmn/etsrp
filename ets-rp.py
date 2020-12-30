@@ -14,7 +14,7 @@ rpc = Presence("793495110440583178")
 rpc.connect()
 
 print("╔════════════════════════════════════════════════════════════════════════════╗\n"
-      "║ Welcome to ETSRP v1.3!                                                     ║\n"
+      "║ Welcome to ETSRP v1.4!                                                     ║\n"
       "║                                                                            ║\n"
       "║ ETSRP provides a better version of ETS2's original Discord Rich Presence   ║\n"
       "║                                                                            ║\n"
