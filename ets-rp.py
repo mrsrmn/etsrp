@@ -25,6 +25,10 @@ print("╔═══════════════════════�
       "║ repository                                                                 ║\n"
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
+now = datetime.datetime.now()
+print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program")
+print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
+
 while True:
     li = []
     for process in f.Win32_Process():
@@ -33,9 +37,16 @@ while True:
     try:
         response = requests.get(url="http://169.254.50.214:25555/api/ets2/telemetry")
         info = json.loads(response.content)
+
+        now_datetime = datetime.datetime.now()
     except requests.exceptions.ConnectionError:
         response = None
         info = None
+
+        now_datetime = datetime.datetime.now()
+        print(f"[WARNING {now_datetime.strftime('%H:%M:%S')}]: No ETS Telemetry server found."
+              f" Please download one for more detailed RP."
+              f" Tutorial on downloading it: https://github.com/Funbit/ets2-telemetry-server#installation")
 
     if "eurotrucks2.exe" in li:
 
@@ -45,7 +56,7 @@ while True:
         try:
             if info["game"]["paused"] is True:
                 text = "Paused / Idle"
-            elif info["game"]["paused"] is False and info["truck"]["make"] != "":
+            elif info["game"]["paused"] is False:
                 text = f"Driving with {info['truck']['make']} {info['truck']['model']}"
             elif info["game"]["paused"] is False and info["truck"]["make"] != "" and\
                     info["job"]["destinationCity"] != "":
