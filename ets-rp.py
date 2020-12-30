@@ -1,4 +1,5 @@
 from pypresence import Presence
+
 import wmi
 import random
 
@@ -69,8 +70,9 @@ while True:
             rand = random.choice(["in Europe", "with some Truck", "to a City"])
             text = f"Driving {rand}"
 
-        rpc.update(state=text, large_image="ets", large_text=f"{info['game']['time']} In Game",
-                   small_image="eu", start=now_epoch)
+        rpc.update(state=text, large_image="ets", large_text=f"{info['game']['time']} In Game\n"
+                                                             f"Truck Speed: {round(info['truck']['speed'])}",
+                   small_image="eu", small_text="RP Mod by MakufonSkifto", start=now_epoch)
 
         print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: Showing RP")
 
@@ -82,4 +84,4 @@ while True:
         except AttributeError:
             print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected")
 
-    time.sleep(5)
+    time.sleep(7)
