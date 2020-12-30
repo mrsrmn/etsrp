@@ -32,6 +32,7 @@ print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
 
 while True:
     li = []
+    now_epoch = epoch.now()
     for process in f.Win32_Process():
         li.append(process.Name)
 
@@ -47,10 +48,9 @@ while True:
               f" Please download one for more detailed RP."
               f" Tutorial on downloading it: https://github.com/Funbit/ets2-telemetry-server#installation")
 
-    now_date = datetime.datetime.now()
-    now = epoch.now()
-
     if "eurotrucks2.exe" in li:
+
+        now_datetime = datetime.datetime.now()
 
         try:
             if info["game"]["paused"] is True:
@@ -70,9 +70,9 @@ while True:
             text = f"Driving {rand}"
 
         rpc.update(state=text, large_image="ets", large_text=f"{info['game']['time']} In Game",
-                   small_image="eu", start=now)
+                   small_image="eu", start=now_epoch)
 
-        print(f"[INFO {now_date.strftime('%H:%M:%S')}]: Showing RP")
+        print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: Showing RP")
 
     else:
         now_datetime = datetime.datetime.now()
