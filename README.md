@@ -8,6 +8,6 @@ To use BetterRP, just download a .zip clone of the repo and start the `etsrp.exe
 
 For a detailed RP in your Discord Profile, download the [ETS2 Telemetry Server](https://github.com/Funbit/ets2-telemetry-server#installation) and run it while etsrp is running
 
-## WARNING
+![Program Running](https://i.imgur.com/G9fSbkl.gif)
 
-**To use the telemetry server with ETSRP, `VMware Network Adapter VMnet8` **MUST** be selected as Network Interfaces. If `VMware Network Adapter VMnet8` doesn't exist, select `Wifi` or `Ethernet`. It depends on what you are using for internet connection.**
+![RP](https://i.imgur.com/p4NOXKY.png)

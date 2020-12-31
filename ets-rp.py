@@ -1,7 +1,6 @@
 from pypresence import Presence
 
 import wmi
-import socket
 
 import random
 import locale
@@ -51,7 +50,7 @@ while True:
 
     elif "eurotrucks2.exe" in li:
         try:
-            response = requests.get(url=f"http://{socket.gethostbyname(socket.gethostname())}:25555/api/ets2/telemetry")
+            response = requests.get(url=f"http://localhost:25555/api/ets2/telemetry")
             info = json.loads(response.content)
         except requests.exceptions.ConnectionError:
             response = None
@@ -67,6 +66,8 @@ while True:
         try:
             if round(info['truck']['speed']) == 0:
                 speed = "Truck Speed: Stopped"
+            elif round(info['truck']['speed']) != 0 and info['truck']['cruiseControlOn'] is True:
+                speed = f"Truck Speed: {round(info['truck']['speed'])} (Cruise Control)"
             else:
                 speed = f"Truck Speed: {round(info['truck']['speed'])}"
         except TypeError:
