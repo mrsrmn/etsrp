@@ -58,7 +58,7 @@ while True:
             info = None
 
             now_datetime = datetime.datetime.now()
-            print(f"[WARNING {now_datetime.strftime('%H:%M:%S')}]: No open ETS Telemetry server found."
+            print(f"[WARNING {now_datetime.strftime('%H:%M:%S')}]: Couldn't connect to ETS Telemetry server."
                   f" Please download one for more detailed RP."
                   f" Tutorial on downloading it: https://github.com/Funbit/ets2-telemetry-server#installation")
 
