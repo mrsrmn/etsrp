@@ -6,7 +6,6 @@ import socket
 import random
 
 import time
-import epoch
 import datetime
 
 import requests
@@ -33,7 +32,9 @@ print("╔═══════════════════════�
 now = datetime.datetime.now()
 print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to exit")
 print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
-now_epoch = epoch.now()
+
+#Epoch time format
+now_epoch = int(time.mktime(datetime.datetime.now().timetuple()))
 
 while True:
     li = []
