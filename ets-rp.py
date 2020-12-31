@@ -33,15 +33,20 @@ print("╔═══════════════════════�
 now = datetime.datetime.now()
 print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to exit")
 print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
+now_epoch = epoch.now()
 
 while True:
     li = []
-    now_epoch = epoch.now()
     for process in f.Win32_Process():
         li.append(process.Name)
 
-    if "eurotrucks2.exe" in li:
+    if "eurotrucks2.exe" not in li:
+        now_datetime = datetime.datetime.now()
+        print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected, closing program")
+        time.sleep(5)
+        exit()
 
+    elif "eurotrucks2.exe" in li:
         try:
             response = requests.get(url=f"http://{socket.gethostbyname(socket.gethostname())}:25555/api/ets2/telemetry")
             info = json.loads(response.content)
@@ -85,9 +90,5 @@ while True:
                    small_image="eu", small_text="RP Mod by MakufonSkifto", start=now_epoch)
 
         print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: Showing RP")
-
-    else:
-        now_datetime = datetime.datetime.now()
-        print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected")
 
     time.sleep(7)
