@@ -42,7 +42,7 @@ while True:
 
     if "eurotrucks2.exe" not in li:
         now_datetime = datetime.datetime.now()
-        print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected, closing program")
+        print(f"[ERROR {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected, closing program")
         time.sleep(5)
         exit()
 
