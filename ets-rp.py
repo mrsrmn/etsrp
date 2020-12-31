@@ -18,7 +18,7 @@ rpc = Presence("793495110440583178")
 rpc.connect()
 
 print("╔════════════════════════════════════════════════════════════════════════════╗\n"
-      "║ Welcome to ETSRP v1.6!                                                     ║\n"
+      "║ Welcome to ETSRP v1.7!                                                     ║\n"
       "║                                                                            ║\n"
       "║ ETSRP provides a better version of ETS2's original Discord Rich Presence   ║\n"
       "║                                                                            ║\n"
@@ -26,14 +26,13 @@ print("╔═══════════════════════�
       "║ This may become an actual ETS2 mod soon.                                   ║\n"
       "║ There may be a little ping on the Rich Presence but not too much           ║\n"
       "║                                                                            ║\n"
-      "║ If there is a bug in the program, please open an issue at the GitHub       ║\n"
-      "║ repository                                                                 ║\n"
+      "║ If there is a bug in the program or there is a suggestion you want to make,║\n"
+      "║ please open an issue at the GitHub repository                              ║\n"
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
 locale.setlocale(locale.LC_ALL, "")
 
-#Epoch time format
-now_epoch = int(time.time())
+now_epoch = int(time.time()) #Epoch time format
 now = datetime.datetime.now()
 
 print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to exit")
