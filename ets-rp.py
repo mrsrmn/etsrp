@@ -17,7 +17,7 @@ rpc = Presence("793495110440583178")
 rpc.connect()
 
 print("╔════════════════════════════════════════════════════════════════════════════╗\n"
-      "║ Welcome to ETSRP v1.7!                                                     ║\n"
+      "║ Welcome to ETSRP v1.8!                                                     ║\n"
       "║                                                                            ║\n"
       "║ ETSRP provides a better version of ETS2's original Discord Rich Presence   ║\n"
       "║                                                                            ║\n"
@@ -64,10 +64,10 @@ while True:
         now_datetime = datetime.datetime.now()
 
         try:
-            if round(info['truck']['speed']) == 0:
-                speed = "Truck Speed: Stopped"
-            elif round(info['truck']['speed']) != 0 and info['truck']['cruiseControlOn'] is True:
+            if round(info['truck']['speed']) != 0 and info['truck']['cruiseControlOn'] is True:
                 speed = f"Truck Speed: {round(info['truck']['speed'])} (Cruise Control)"
+            elif round(info['truck']['speed']) == 0:
+                speed = "Truck Speed: Stopped"
             else:
                 speed = f"Truck Speed: {round(info['truck']['speed'])}"
         except TypeError:
