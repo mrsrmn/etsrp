@@ -34,7 +34,7 @@ locale.setlocale(locale.LC_ALL, "")
 now_epoch = int(time.time())  #Epoch time format
 now = datetime.datetime.now()
 
-widgets = ["Loading ETSRP: ", progressbar.AnimatedMarker()]
+widgets = [f"[INFO {now.strftime('%H:%M:%S')}]: Loading ETSRP: ", progressbar.AnimatedMarker()]
 bar = progressbar.ProgressBar(widgets=widgets).start()
 
 for i in range(40):
