@@ -3,6 +3,7 @@ from pypresence import Presence
 import wmi
 
 import random
+import progressbar
 import locale
 
 import time
@@ -14,7 +15,6 @@ import ujson as json
 f = wmi.WMI()
 
 rpc = Presence("793495110440583178")
-rpc.connect()
 
 print("╔════════════════════════════════════════════════════════════════════════════╗\n"
       "║ Welcome to ETSRP v1.8!                                                     ║\n"
@@ -34,8 +34,15 @@ locale.setlocale(locale.LC_ALL, "")
 now_epoch = int(time.time())  #Epoch time format
 now = datetime.datetime.now()
 
-print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to exit")
-print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
+widgets = ["Loading ETSRP: ", progressbar.AnimatedMarker()]
+bar = progressbar.ProgressBar(widgets=widgets).start()
+
+for i in range(40):
+    time.sleep(0.1)
+    bar.update(i)
+
+rpc.connect()
+print(f"\n[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
 
 while True:
     li = []
@@ -44,9 +51,20 @@ while True:
 
     if "eurotrucks2.exe" not in li:
         now_datetime = datetime.datetime.now()
-        print(f"[ERROR {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected, closing program")
-        time.sleep(5)
-        exit()
+        try:
+            response = requests.get(url=f"http://localhost:25555/api/ets2/telemetry")
+            info = json.loads(response.content)
+            print(f"[ERROR {now_datetime.strftime('%H:%M:%S')}]: Connected")
+            print(f"[ERROR {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected, closing program")
+            time.sleep(5)
+            exit()
+        except requests.exceptions.ConnectionError:
+            print(f"[WARNING {now_datetime.strftime('%H:%M:%S')}]: Couldn't connect to ETS Telemetry server."
+                  f" Please download one for more detailed RP."
+                  f" Tutorial on downloading it: https://github.com/Funbit/ets2-telemetry-server#installation")
+            print(f"[ERROR {now_datetime.strftime('%H:%M:%S')}]: No running ETS2 detected, closing program")
+            time.sleep(5)
+            exit()
 
     elif "eurotrucks2.exe" in li:
         try:
