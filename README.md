@@ -1,6 +1,6 @@
 # ETSRP For Euro Truck Simulator 2
 
-**ETSRP is made with [pypresence](https://github.com/qwertyquerty/pypresence). All the credit goes to the devs**
+**ETSRP is made with [pypresence](https://github.com/qwertyquerty/pypresence)**
 
 ## Usage
 
