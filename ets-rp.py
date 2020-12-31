@@ -32,7 +32,7 @@ print("╔═══════════════════════�
 
 locale.setlocale(locale.LC_ALL, "")
 
-now_epoch = int(time.time()) #Epoch time format
+now_epoch = int(time.time())  #Epoch time format
 now = datetime.datetime.now()
 
 print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to exit")
