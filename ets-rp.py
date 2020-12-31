@@ -34,7 +34,7 @@ print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to
 print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
 
 #Epoch time format
-now_epoch = int(time.mktime(datetime.datetime.now().timetuple()))
+now_epoch = int(time.time())
 
 while True:
     li = []
