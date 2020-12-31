@@ -86,7 +86,9 @@ while True:
                 rand = random.choice(["in Europe", "with some Truck", "to a City"])
                 text = f"Driving {rand}"
 
-            if info["navigation"]["estimatedDistance"] != 0:
+            if info["game"]["paused"] is True:
+                dist = None
+            elif info["navigation"]["estimatedDistance"] != 0:
                 dist = f"Estimated Distance: {round(info['navigation']['estimatedDistance'] / 1000):n}km"
             else:
                 dist = None
