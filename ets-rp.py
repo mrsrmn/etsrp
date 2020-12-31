@@ -4,6 +4,7 @@ import wmi
 import socket
 
 import random
+import locale
 
 import time
 import datetime
@@ -29,12 +30,14 @@ print("╔═══════════════════════�
       "║ repository                                                                 ║\n"
       "╚════════════════════════════════════════════════════════════════════════════╝\n")
 
-now = datetime.datetime.now()
-print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to exit")
-print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
+locale.setlocale(locale.LC_ALL, "")
 
 #Epoch time format
 now_epoch = int(time.time())
+now = datetime.datetime.now()
+
+print(f"[INFO {now.strftime('%H:%M:%S')}]: Launching Program | Press CTRL + C to exit")
+print(f"[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
 
 while True:
     li = []
@@ -83,11 +86,17 @@ while True:
                 rand = random.choice(["in Europe", "with some Truck", "to a City"])
                 text = f"Driving {rand}"
 
+            if info["navigation"]["estimatedDistance"] != 0:
+                dist = f"Estimated Distance: {round(info['navigation']['estimatedDistance'] / 1000):n}km"
+            else:
+                dist = None
+
         except TypeError:
             rand = random.choice(["in Europe", "with some Truck", "to a City"])
             text = f"Driving {rand}"
+            dist = None
 
-        rpc.update(state=text, large_image="ets", large_text=speed,
+        rpc.update(state=dist, details=text, large_image="ets", large_text=speed,
                    small_image="eu", small_text="RP Mod by MakufonSkifto", start=now_epoch)
 
         print(f"[INFO {now_datetime.strftime('%H:%M:%S')}]: Showing RP")
