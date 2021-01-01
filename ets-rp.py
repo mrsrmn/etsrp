@@ -41,6 +41,7 @@ for i in range(40):
     time.sleep(0.1)
     bar.update(i)
 
+print(f"\n[INFO {now.strftime('%H:%M:%S')}]: Loaded Program")
 rpc.connect()
 print(f"\n[INFO {now.strftime('%H:%M:%S')}]: Connecting to Telemetry server")
 
